@@ -1,0 +1,15 @@
+[Unit]
+Description=E2guardian Web filtering
+After=network.target
+TimeoutStartSec=20s
+
+[Service]
+LimitNOFILE=65535
+Type=forking
+IgnoreSIGPIPE=no
+GuessMainPID=no
+ExecStart=@DGBINDIR@/e2guardian
+ExecReload=@DGBINDIR@/e2guardian -r
+
+[Install]
+WantedBy=multi-user.target
